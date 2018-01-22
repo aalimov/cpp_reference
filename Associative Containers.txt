@@ -1,0 +1,93 @@
+Associative Containers
+	Set(std::set)
+	---- containers that store unique elements following a specific order
+	---- each value is unique, no two elements in a set have equivalent keys
+	---- the value of an elem identifies the elem, the value of an elem is also the key used to identify it
+	---- elements are associated by key and not by their absolute position in the container
+	---- elements follow strict order, all inserted elements are given a position following this order
+	---- dynamically allocated memory sizes
+	---- generally slower than unordered_set
+	---- typically implemented as binary search trees
+		#include <set>
+		std::set<int> mySet;
+		std::set<int> mySet = { 1, 2, 3, 4, 5 };
+		int myInts[ ] = { 10, 20, 30, 40, 50 };
+		std::set<int> mySet( myInts );
+		
+		Example using set
+		#include <set>
+		#include <iostream>
+		std::set<int> mySet;
+		mySet.insert( 1 );
+		mySet.insert( 2 );
+		std::cout << "Set Size = " << mySet.size( ) << std::endl;
+		
+		Example iterating through a set
+		#include <set>
+		#include <iostream>
+		std::set<int> mySet = { 1, 2, 3, 4, 5 };
+		for(std::set<int>::iterator itr = mySet.begin( ); itr != mySet.end( ); ++itr){
+			std::cout << " " << *itr << std::endl;
+		}
+		
+		Example searching for an element in set
+		#include <set>
+		#include <iostream>
+		std::set<std::string> myNamesSet;
+		myNamesSet.insert( "Alex" );
+		myNamesSet.insert( " Hannah" );
+		myNamesSet.insert( "Harry" );
+		std::set<std::string>::iterator itr = myNamesSet.find( "Hannah" );
+		if( itr != myNamesSet.end( ) ){
+			std::cout << "Hannah found" << std::endl;
+		} else {
+			std::cout << "Hannah not found" << std::endl;
+		}
+	
+	Multiset(std::multiset)
+	---- stores elements in a specific order
+	---- multiple elements can have equivalent values
+	---- the value of the element identifies itself (key), same as set
+	---- the value of an element cannot be modified once in the container, the elements are always const
+	---- elements can be inserted or removed
+	---- same construction as set, except for the name
+	
+	Map(std::map)
+	---- store elements formed by a combination of key value and map value, following a specific order
+	---- generally slower than unordered_map to access elements by key
+	---- allow for direct iteration on subsets based on their order
+	---- mapped values can be accessed directly, same as vector, deque, by using operator[ ]
+	---- typically implemented as binary search trees
+	---- each element associates a key to a mapped value
+	---- keys are meant to identify the elements whose main content is the mapped value
+		#include <map>
+		#include <iostream>
+		std::map<char, int> myMap;
+		myMap[ 'a' ] = 1;
+		myMap[ 'b' ] = 2;
+		myMap[ 'c' ] = 3;
+		std::map<char, int> mySecondMap( myMap );
+		mySecondMap[ 'b' ] = myMap[ 'a' ];
+		std::myMap<char, int> myThirdMap = { { 'a', 1}, { 'b', 2}, { 'c', 7} };
+		
+	
+	Multimap(std::multimap)
+	---- multiple elements can have equivalent keys
+	---- allow for direct iteration on subsets based on their order
+	---- mapped values can be accessed directly, same as vector, deque, by using operator[ ]
+	---- typically implemented as binary search trees
+	---- each element associates a key to a mapped value
+	---- keys are meant to identify the elements whose main content is the mapped value
+	---- same constructor as map aside from name
+		Example iterating over multimap using Iterator
+		for( std::multimap<char, int>::iterator itr = myMultimap.begin( ); itr != myMultimap.end( ); itr++){
+			std::cout << itr->first << " :: " << itr->second << std::endl;
+		}
+		
+		Example iterating over multimap using range based for loop
+		for( std::pair<char, int> elem : myMultimap ){
+			std::cout << elem.first << " :: " << elem.second << std::endl;
+		}
+		
+
+

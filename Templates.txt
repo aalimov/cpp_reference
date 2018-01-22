@@ -1,0 +1,48 @@
+Template
+---- special functions that can operate with generic types
+---- allows creation of template whose functionality can be adapted to more than one type or class
+---- template <class identifier> function_declaration;
+---- template <typename identifier> function_declaration;
+	template <class myType>
+	myType getMax( myType a, myType b){
+		return (a > b ? a:b);
+	}
+---- function_name<type>  (parameters);
+	int x, y;
+	getMax<int> (x, y);
+---- compiler automatically generates a function replacing each appearance of myType with template parameter (int in this case)
+	Example using template functions
+	#include <iostream>
+	template <class type>
+	type getMax( type a, type b){
+		type result;
+		result = ( a > b )? a:b;
+		return (result);
+	}
+	int main( ){
+		int i = 5;
+		int k = 6;
+		int r;
+		r = getMax<int> (i, k);
+		std::cout << r << endl;
+		return 0;
+	}
+	
+	Example using class templates
+	template <class C>
+	class valuePair {
+		C values[ 2 ];
+		public:
+			valuePair( C first, C second) {
+				values[ 0 ] = first;
+				values[ 1 ] = second;
+			}
+	};
+	 
+	Example defining member function outside declaration of class template
+	template <class C> //external declaration for template must always be preceded by template line
+	C valuePair<C>::getMax( ) {
+		C returnVal;
+		returnVal = a > b ? a:b;
+		return returnVal;
+	}

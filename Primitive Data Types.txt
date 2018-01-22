@@ -1,0 +1,73 @@
+Primitive Data Types
+	Character
+		char
+		---- holds a 1-byte (8 bit) integer
+			char ch;
+			char ch = 'a';
+			char ch2(97);   // init with integer 97.. will print a character
+			char ch3('a');  // init with code point for 'a' (97)
+			
+	Integer
+		int
+		---- holds a 2-byte (16 bit) or 4-byte value (32 bit)
+			int n;
+			int n = –2,147,483,648;    // to 2,147,483,647 (signed)
+			int n = 0;                // to 4,294,967,295 (unsigned)
+		short
+		---- holds a 2-byte (16 bit) value
+			short n;
+			short n = 10;
+		long
+		---- holds a 4-byte (32 bit) value
+			long n;
+			long n = –2,147,483,648;    // to 2,147,483,647 (signed)
+			long n = 0;                // to 4,294,967,295 (unsigned)
+		long long
+		---- holds a 8-byte (64 bit) value
+			long long n = –9,223,372,036,854,775,808; //to 9,223,372,036,854,775,807 (signed)
+			long long n = 0;                      //to 18,446,744,073,709,551,615 (unsigned)
+		byte
+		---- 8-bit value
+		
+	Floating-Point Number
+		float
+		---- holds a 4-byte (16 bit) value
+			float n;
+			---- 3.4E +/- 38 (7 digits)
+		double
+			double n;
+			---- 1.7E +/- 308 (15 digits)
+		
+	Boolean
+		true
+		---- boolean true value
+			bool n = true;
+			bool n = 1;            //same as initializing to true
+			bool n = 100;     //same as initializing to true
+			bool n = 15.5;  //same as initializing to true
+			
+		false
+		---- boolean false value
+			bool n = false;
+			bool n = 0; //same as initializing to false
+			
+		
+	Reference &
+		---- referring to an objects address in memory
+		---- references cannot be NULL
+		---- reference must be initialized when declared
+			int x = 1;
+			int &n = x;      //references the address location of the value of x
+			n = 2;            //x is now changed to 2
+			x = 3;          // x and n are now 3
+		
+		
+	Dereference * (a.k.a pointer)
+		---- accessing an objects value from a referenced memory location
+			int z = 1000;
+			int *ptr;
+			int x;
+			ptr = &z;   //ptr references the address of z
+			x = *ptr;  //x is now the value 1000
+	
+	

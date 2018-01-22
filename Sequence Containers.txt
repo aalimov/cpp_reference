@@ -1,0 +1,116 @@
+Sequence Containers
+	Array (std::array)
+	---- a container that holds fixed sized arrays (static)
+	---- std::array<datatype> myArray[numberOfElements];
+		std::array<int> intArray = { 1, 2, 3 };
+		std::array<int, 3> intArray = { 1, 2, 3 };
+		int myArray[3]; //allocates the space in memory for a 3 element int array.
+		int myArray[3] = { 1, 2, 3 };
+		int myArray[ ] = { 1, 2, 3 };
+		myArray[1] = 4;  //updates the second element in my array to the integer 4.
+		
+		Example for loop accessing array contents
+		int arraySum = 0;
+		for( int i = 0; i < 3; i++ ){
+			arraySum += myArray[ i ];
+		}
+		
+		Example setting a variable value to the value at a given array index
+		int myVal = myArray[ 2 ];
+		
+		Example using pointers and references with arrays
+		std::array<int> myArray = { 1, 2, 3, 4, 5 };
+		int *ptr;
+		ptr = &myArray[0];  //ptr references the address of the first element of myArray
+		
+		Example using for loop printing address locations of elements in myArray
+		std::array<int> myArray = { 1, 2, 3, 4, 5};
+		int *ptr;
+		for(int i = 0; i < 5: i++){
+			std::cout << "&myArray[" << i << "] = " << &myArray[ i ] << std:endl;
+		}
+		
+		Example using for loop printing address locations of myArray using pointers
+		Example will have the same output as the above for loop example
+		std::array<int> myArray = { 1, 2, 3, 4, 5};
+		int *ptr;
+		ptr = myArray;  //ptr = &myArray[ 0 ]
+		for(int i = 0; i < 5: i++){
+			std::cout << "ptr + " << i << " = " << ptr + i << std:endl;
+		}
+		
+		Taking in and printing out array elements using pointer (dereference)
+		int data[5];
+		std::cout << "Enter elements: ";
+		
+		for(int i = 0; i < 5; ++i){
+			std::cin >> data[i];
+		}
+		std::cout << "You entered: ";
+		for(int i = 0; i < 5; ++i){
+			std::cout << std::endl << *(data + i);
+		}
+		
+		Additional considerations
+		int ptr[ 5 ] = { 3, 4, 5, 5, 3 }
+			&ptr[ 0 ] is equal to ptr
+			*ptr is equal to ptr[ 0 ]
+			
+			&ptr[ 1 ] is equal to ptr + 1
+			*(ptr + 1) is equal to ptr[ 1 ]
+			
+			&ptr[ i ] is equal to ptr + i
+			*(ptr + i) is equal to ptr[ i ]
+	
+	Vector (std::vector)
+	---- a dynamically sized container of elements
+	---- stores elements on the heap
+		#include <vector>
+		std::vector<int> myVector;
+		std::vector<int> myVector( 10 );  //creates an integer vector with 10 zero initialized elements
+		std::vector<int> myVector = { 1, 2, 3, 4, 5 };
+		
+		Example assigning values to vector elements using operator[ ]
+		std::vector<int> myVector;
+		for(int i = 0; i < 10; i++){
+			myVector[ i ] = i;  // initializes 0, 1, 2, 3, 4, 5,  6, 7, 8, 9 as the vector elements
+		}
+	
+		Accessing a vector element using dereferencing (does NOT copy elements)
+		std::vector<int> *vecPtr;
+		std::vector<int> &vecReference = *vecPtr; //vector is NOT copied
+		int elem = vecRef[ i ];
+	
+	List (std::list)
+	---- a dynamically sized container of elements
+	---- compared to vector: slow traversal, fast insert and deletion
+	---- does not have random access iterator
+		std::list<int> myList;
+		std::list<int> myList( 10 );
+		std::list<int> myList = { 1, 2, 3, 4, 5 };
+		
+		Example accessing list element values (In C++11 can use std::next instead of std::advance)
+		#include <iterator>
+		#include <list>
+		std::list<int> myList = { 1, 2, 3, 4, 5 };
+		auto myListFront = myList.begin( );
+		std::advance(myListFront, 4);  //move to the 4th element in the list
+		std::cout << *myListFront << std::endl;
+		
+	Deque(std::deque)
+	---- deue (pronounced deck): double ended queue
+	---- a dynamically sized container of elements
+	---- allows random access iterators, same as vectors
+		std::deque<int> myDeque;
+		std::deque<int> myDeque( 10 );
+		std::deque<int> myDeque = { 1, 2, 3, 4, 5 };
+		
+		Example accessing deque element values
+		#include <deque>
+		std::deque<int> myDeque;
+		for(int i = 0; i < 10; i++){
+			myDeque[ i ] = i;  // initializes 0, 1, 2, 3, 4, 5,  6, 7, 8, 9 as the deque elements
+		}
+
+
+

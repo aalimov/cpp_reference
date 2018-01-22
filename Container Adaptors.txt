@@ -1,0 +1,42 @@
+Container Adaptors
+	Stack(std::stack)
+	---- adapts standard container types i.e. list, vector, deque
+	---- if no container type is specified stack defaults to using deque
+	---- LIFO: last-in, first-out
+	---- elements are pushed/popped from the "back" a.k.a the "Top" of the stack
+	---- by default stack supports: empty, size, back, push_back, pop_back
+		#include <stack>
+		#include <deque>
+		#include <vector>
+		std::deque<int> myDeque( 3, 100);  //initializes deque with 3 ints set to 100
+		std::stack<int> myStack;
+		std::stack<int> myStack( myDeque );
+		std::stack<int, std::vector<int>> myStack;
+		std::stack<int, std::deque<int>> myStack( myDeque );
+	
+	Queue(std::queue)
+	---- adapts standard container types i.e. list, deque
+	---- FIFO: first-in, first-out
+	---- elements are pushed to the back and popped from the front of the queue
+	---- by default stack supports: empty, size, front, back, push_back, pop_front
+		#include <queue>
+		#include <deque>
+		#include <list>
+		std::deque<int> myDeque( 3, 100);  //initializes deque with 3 ints set to 100
+		std::stack<int> myStack;
+		std::stack<int> myStack( myDeque );
+		std::stack<int, std::list<int>> myStack;
+		std::stack<int, std::deque<int>> myStack( myDeque );
+	
+	Priority Queue(std::priority_queue)
+	---- first element is always the greatest element it contains
+	---- elements can be inserted at any moment, but only the greatest element can be retrieved
+	---- elements are popped from the back a.k.a the "Top" of the container
+	---- elements are accessible through random access iterators, same as deque and vector
+	---- by default priority_queue supports: empty( ), size( ), front( ), push_back( ), and pop_back( )
+		std::priority_queue<int> myPriorityQueue;
+		std::priority_queue<int, std::vector<int>> myPriorityQueue ;
+
+
+
+
